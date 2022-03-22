@@ -25,6 +25,9 @@ disqus-identifier: # Add your shortname for Disqus Comment. For example mr-brown
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
 permalink: /:year/:month/:day/:title/
 plugins:
   - jekyll-paginate

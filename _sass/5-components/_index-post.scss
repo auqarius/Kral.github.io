@@ -35,23 +35,30 @@
     background-size: cover;
     background-position: 50% 50%;
   }
-  .c-post-content {
+  .c-post-content-a {
     padding: 15px;
     width: 70%;
-    .c-post-title {
-      font-size: 30px;
-      font-weight: 400;
-      margin: 0 0 15px;
-      a {
-        text-decoration: none;
-        color: $blue-dark;
+    color: $blue-dark;
+    .c-post-content {
+      padding: 15px;
+      width: 100%;
+      color: $blue-dark;
+      .c-post-title {
+        font-size: 30px;
+        font-weight: 400;
+        margin: 0 0 15px;
+        a {
+          text-decoration: none;
+          color: $blue-dark;
+        }
+      }
+      .c-post-date,
+      .c-post-words {
+        font-size: 12px;
       }
     }
-    .c-post-date,
-    .c-post-words {
-      font-size: 12px;
-    }
   }
+  
 }
 
 .c-load-more {
