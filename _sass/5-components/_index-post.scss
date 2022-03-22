@@ -84,11 +84,16 @@
       width: 100%;
       border-radius: 10px 10px 0 0;
     }
-    .c-post-content {
+    .c-post-content-a {
+      padding: 15px;
       width: 100%;
-      .c-post-title {
-        font-size: 21px;
-        margin: 15px 0;
+      color: $blue-dark;
+      .c-post-content {
+        width: 100%;
+        .c-post-title {
+          font-size: 21px;
+          margin: 15px 0;
+        }
       }
     }
   }
@@ -99,11 +104,16 @@
     width: 100%;
     max-width: 100%;
     margin: 0 0 20px;
-    .c-post-content {
+    .c-post-content-a {
+      padding: 15px;
       width: 100%;
-      .c-post-title {
-        font-size: 21px;
-        margin: 15px 0;
+      color: $blue-dark;
+      .c-post-content {
+        width: 100%;
+        .c-post-title {
+          font-size: 21px;
+          margin: 15px 0;
+        }
       }
     }
   }
