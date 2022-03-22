@@ -27,6 +27,7 @@ disqus-identifier: # Add your shortname for Disqus Comment. For example mr-brown
 markdown: kramdown
 highlighter: rouge
 kramdown:
+  input: GFM
   syntax_highlighter: rouge
 permalink: /:year/:month/:day/:title/
 plugins:

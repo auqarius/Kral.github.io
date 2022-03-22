@@ -87,7 +87,7 @@ Objective-C 的文件中，只有 `.m` 文件会被编译 `.h` 文件只是一�
 
 然后将自定义宏替换，例如我们定义了如下宏并进行了使用：
 
-```
+```c
 #define Button_Height 44
 #define Button_Width 100
 
@@ -96,7 +96,7 @@ button.frame = CGRectMake(0, 0, Button_Width, Button_Height);
 
 那么代码将被替换为：
 
-```
+```c
 button.frame = CGRectMake(0, 0, 44, 100);
 ```
 
@@ -104,7 +104,7 @@ button.frame = CGRectMake(0, 0, 44, 100);
 
 在将代码完全拆开后，将会对代码进行符号化，对于分析代码的代码 (clang)，我们写的代码就是一些字符串，为了后面给这些代码进行语法和语义分析，需要将我们的代码进行标记并符号化，例如一段 helloworld 的 c 代码：
 
-```objective-c
+```c
 #include <stdio.h>
 int main(int argc, char *argv[])
 {
@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
 
 使用 clang 命令 `clang -Xclang -dump-tokens helloworld.c`  转化后的代码如下（去掉了 stdio.h 中的内容）：
 
-```
+```c
 int 'int'	 [StartOfLine]	Loc=<helloworld.c:2:1>
 identifier 'main'	 [LeadingSpace]	Loc=<helloworld.c:2:5>
 l_paren '('		Loc=<helloworld.c:2:9>
@@ -151,7 +151,7 @@ eof ''		Loc=<helloworld.c:6:2>
 
 使用 clang 命令 `clang -Xclang -ast-dump -fsyntax-only helloworld.c`，转化后的树如下（去掉了 stdio.h 中的内容）： 
 
-```
+```c
 `-FunctionDecl 0x7f8eaf834bb0 <helloworld.c:2:1, line:6:1> line:2:5 main 'int (int, char **)'
   |-ParmVarDecl 0x7f8eaf8349b8 <col:10, col:14> col:14 argc 'int'
   |-ParmVarDecl 0x7f8eaf834aa0 <col:20, col:31> col:26 argv 'char **':'char **'
@@ -194,7 +194,7 @@ eof ''		Loc=<helloworld.c:6:2>
 
 例如我们上面的代码将会被生成为：
 
-```
+```c
 ; ModuleID = 'helloworld.c'
 source_filename = "helloworld.c"
 target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
@@ -242,7 +242,7 @@ attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-
 
 上面的代码是没有进行优化过的，在语言转换的过程中，有些代码是可以被优化以提升执行效率的。使用命令 `clang -O3 -S -emit-llvm helloworld.c -o helloworld.ll`，其实和上面的命令的区别只有 `-O3` 而已，注意，这里是大写字母 O 而不是数字 0。优化后的代码如下：
 
-```
+```c
 ; ModuleID = 'helloworld.c'
 source_filename = "helloworld.c"
 target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
@@ -279,7 +279,7 @@ attributes #1 = { nounwind }
  
  使用命令 ` clang -S -o - helloworld.c | open -f` 可以查看生成的汇编代码：
  
- ```
+ ```c
  	.section	__TEXT,__text,regular,pure_instructions
 	.macosx_version_min 10, 12
 	.globl	_main
@@ -331,7 +331,7 @@ L_.str:                                 ## @.str
  
  `xcrun size -x -l -m helloworld.out`
  
-```
+```c
 Segment __PAGEZERO: 0x100000000 (vmaddr 0x0 fileoff 0)
 Segment __TEXT: 0x1000 (vmaddr 0x100000000 fileoff 0)
 	Section __text: 0x34 (addr 0x100000f50 offset 3920)
@@ -384,7 +384,7 @@ total 0x100003000
 
 下面将详细解释以下每一步的操作，首先创建一个 swift 文件 `swiftFile.swift` ：
 
-```
+```c
 func double(number: Int) {
     print(number*2)
 }
@@ -396,7 +396,7 @@ func double(number: Int) {
 
 使用命令 `swiftc -dump-parse swiftFile.swift` 可以查看初步解析后的 AST：
 
-```
+```c
 (source_file
   (func_decl "double(number:)"
     (parameter_list
@@ -417,7 +417,7 @@ func double(number: Int) {
 
 使用命令 `swiftc -dump-ast swiftFile.swift` 可以查看进行过类型检查后的 AST：
 
-```
+```c
 (source_file
   (func_decl "double(number:)" interface type='(Int) -> ()' access=internal
     (parameter_list
@@ -462,7 +462,7 @@ func double(number: Int) {
 
 使用命令 `swiftc -emit-sil swiftFile.swift | open -f` 可以查看生成的 SIL 代码，输出比较长，贴出部分来查看：
 
-```
+```c
 sil_scope 1 {  parent @main : $@convention(c) (Int32, UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>) -> Int32 }
 
 // main
@@ -545,7 +545,7 @@ SIL  中间语言看起来就顺眼多了，居然还有注释（英文注释为
 
 使用命令 `swiftc  -emit-silgen swiftFile.swift | open -f` 可以看到优化后的代码：
 
-```
+```c
 sil_stage raw
 
 import Builtin
@@ -654,7 +654,7 @@ sil [noinline] [_semantics "stdlib_binary_only"] @_TIFs5printFTGSaP__9separatorS
 
 使用命令 `swiftc -emit-ir swiftFile.swift | open -f` 可以查看生成的 LLVM IR 中间码，这里看到了一些熟悉的身影：
 
-```
+```c
 ; ModuleID = '-'
 source_filename = "-"
 target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
