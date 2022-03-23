@@ -3,7 +3,7 @@ layout: post
 title: iOS App 的编译过程
 image: iOS-ios-compile-cover.svg
 date: 2017-11-22 17:45:56 +0400
-tags: iOS Develop
+tags: iOS-Develop
 categories: iOS
 subTitle: 在 iOS 开发的过程中，Xcode 为我们提供了非常完善的编译能力，你是否好奇在你按下 Command + R 的时候背后究竟发生了什么？
 show: 1
