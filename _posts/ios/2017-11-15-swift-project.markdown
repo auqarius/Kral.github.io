@@ -5,7 +5,7 @@ image: iOS-swift-project-cover.webp
 date: 2017-11-15 14:30:31 +0400
 tags: iOS-Develop Swift
 categories: iOS
-subTitle: 这里要讨论的，就是如何用 Swift 搭建一个项目。首先表明这里只是针对单个项目，对于组件化等开发模式来说，会更加复杂，但是基础还是可以通用的。
+subTitle: 这里要讨论的是如何用 Swift 搭建一个项目。首先表明这里只是针对单个项目，对于组件化等开发模式来说，会更加复杂，但是基础还是可以通用的。
 show: 1
 ---
 
