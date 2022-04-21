@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 用 Swfit 搭建一个完整项目
-image: iOS-swift-project-cover.webp
+image: iOS/swift_project/cover.webp
 date: 2017-11-15 14:30:31 +0400
 tags: iOS-Develop Swift
 categories: iOS

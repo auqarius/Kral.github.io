@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 《奇特的一生》
-image: booknote-strangelife-cover.png
+image: booknote/奇特的一生/cover.png
 date: 2017-12-13 17:30:40 +0200
 tags: 读书笔记
 categories: 读书笔记

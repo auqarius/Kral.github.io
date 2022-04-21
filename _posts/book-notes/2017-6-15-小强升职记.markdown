@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 《小强升职记》
-image: booknote-xqszj-cover.jpeg
+image: booknote/小强升职记/cover.jpeg
 date: 2017-6-15 18:26:31 +0400
 tags: 读书笔记
 categories: 读书笔记
